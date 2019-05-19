@@ -1,5 +1,5 @@
 .wrapper
-  = render 'messages/shared/side_bar'
+  = render 'shared/side_bar'
   .chat
     .header
       .left-header
@@ -17,7 +17,7 @@
         .right-header__button
           Edit
     .messages
-      = render partial: "messages/shared/messages"
+      = render partial: "shared/messages"
     .form
       %form
         %input.form__message
