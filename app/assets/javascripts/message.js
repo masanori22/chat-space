@@ -91,22 +91,27 @@ $(function(){
 
 var updating = function(){
  var message_id = $('.message:last').data('id');
- $.ajax({
-  url: 'api/messages',
-  type: 'GET',
-  data:{id:message_id},
-  dataType: 'json',
-  })
- .done(function(new_messages){
-   new_messages.forEach(function(value){
-     var html = buildMessageHTML(value);
-     $(`.messages`).append(html)
-   })
-  })
- .fail(function(){
-      alert('error');
- })
- }
+ current_url = location.href;
+ if (current_url.match(/\/groups\/\d+\/messages/)) {
+    $.ajax({
+      url: 'api/messages',
+      type: 'GET',
+      data:{id:message_id},
+      dataType: 'json',
+      })
+    .done(function(new_messages){
+      if (new_messages.length !== 0) {
+        new_messages.forEach(function(value){
+        var html = buildMessageHTML(value);
+        $(`.messages`).append(html)
+        })
+      }
+      })
+    .fail(function(){
+          alert('error');
+    })
+  };
+};
   setInterval(updating, 5000);
 });
 });
