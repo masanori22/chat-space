@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function(){
                 ${message.content}
               </p>
             </div>
-            <image src = "${ message.image.url}" class ="lower-message__image">
+            <image src = "${ message.image}" class ="lower-message__image">
           </div>`
         return html;
       } else {
