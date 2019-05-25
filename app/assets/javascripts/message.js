@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function(){
       function buildHTML(message){
       if ( message.image ) {
         var html =
-         `<div class="message" data-message-id=${message.id}>
+         `<div class="message" data-id = ${message.id}>
             <div class="upper-message">
               <div class="upper-message__user-name">
                 ${message.user_name}
@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function(){
         return html;
       } else {
         var html =
-         `<div class="message" data-message-id=${message.id}>
+         `<div class="message" data-id = ${message.id}>
             <div class="upper-message">
               <div class="upper-message__user-name">
                 ${message.user_name}
@@ -52,7 +52,6 @@ $(document).on('turbolinks:load', function(){
           contentType: false
         })
         .done(function(data){
-          console.log(data)
           var html = buildHTML(data);
           $('.messages').append(html);
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
